@@ -1,6 +1,9 @@
 import { Task, User, AuthResponse, UserResponse, UsersResponse, AIResponse } from './types';
+import dotenv from 'dotenv';
+dotenv.config();
+const API_URL = process.env.NEXT_PUBLIC_LIVE_SERVER_API
 
-const API_URL = 'http://localhost:5000';
+console.log(API_URL)
 
 const defaultHeaders = {
   'Content-Type': 'application/json',
@@ -70,60 +73,6 @@ export async function getUsers(token: string): Promise<UsersResponse> {
 
   if (!response.ok) {
     throw new Error('Failed to get users');
-  }
-
-  return response.json();
-}
-
-export async function getSuggestions(prompt: string, token: string): Promise<AIResponse> {
-  const response = await fetch(`${API_URL}/api/tasks/suggest`, {
-    method: 'POST',
-    headers: {
-      ...defaultHeaders,
-      'Authorization': `Bearer ${token}`,
-    },
-    credentials: 'include',
-    body: JSON.stringify({ prompt }),
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to get suggestions');
-  }
-
-  return response.json();
-}
-
-export async function getBreakdown(prompt: string, token: string): Promise<AIResponse> {
-  const response = await fetch(`${API_URL}/api/tasks/breakdown`, {
-    method: 'POST',
-    headers: {
-      ...defaultHeaders,
-      'Authorization': `Bearer ${token}`,
-    },
-    credentials: 'include',
-    body: JSON.stringify({ prompt }),
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to get breakdown');
-  }
-
-  return response.json();
-}
-
-export async function prioritizeTasks(tasks: Task[], token: string): Promise<AIResponse> {
-  const response = await fetch(`${API_URL}/api/tasks/priotize`, {
-    method: 'POST',
-    headers: {
-      ...defaultHeaders,
-      'Authorization': `Bearer ${token}`,
-    },
-    credentials: 'include',
-    body: JSON.stringify({ Tasks: tasks }),
-  });
-
-  if (!response.ok) {
-    throw new Error('Failed to prioritize tasks');
   }
 
   return response.json();

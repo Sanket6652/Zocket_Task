@@ -16,7 +16,7 @@ export class WebSocketClient {
 
   private connect() {
     try {
-      this.ws = new WebSocket(`ws://localhost:5000/ws?token=${this.token}`);
+      this.ws = new WebSocket(`wss://zocket-task-kdds.onrender.com/ws?token=${this.token}`);
 
       this.ws.onopen = () => {
         console.log("✅ WebSocket connected");
