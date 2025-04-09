@@ -27,6 +27,7 @@ func main() {
 	var allowedOrigins = []string{
 		"http://localhost:3000",
 		"https://zocket-task-kdds.onrender.com",
+		"https://zocket-task-chi.vercel.app",
 	}
 	
 	r.Use(cors.New(cors.Config{
