@@ -21,9 +21,9 @@ func main() {
 		panic(fmt.Sprintf("Could not connect to database: %v", err))
 	}
 	port := os.Getenv("PORT")
-    if port == "" {
-        port = "8080"
-    }
+	if port == "" {
+		port = "5000"
+	}
 	
 	controllers.InitController(config.DB)
 	r := gin.Default()
@@ -44,6 +44,6 @@ func main() {
 	}))
 	
 	routes.SetupRoutes(r)
-	fmt.Println("Server is running on port 5000")
-	r.Run(":5000")
+	fmt.Println("Server is running on port", port)
+	r.Run(":" + port)
 }
