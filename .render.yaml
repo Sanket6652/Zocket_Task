@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: zocket-task-server
+    env: go
+    rootDir: server
+    buildCommand: go
