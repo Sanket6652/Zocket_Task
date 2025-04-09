@@ -21,7 +21,7 @@ export function TaskCreateButton() {
             <DialogTitle>Create New Task</DialogTitle>
             <DialogDescription>Add a new task to your workflow</DialogDescription>
           </DialogHeader>
-          <TaskForm onSuccess={() => setIsOpen(false)} />
+          <TaskForm onSuccess={() => setIsOpen(false)} wsClient={undefined} assignees={[]} />
         </DialogContent>
       </Dialog>
     </>
