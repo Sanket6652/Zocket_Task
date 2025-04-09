@@ -24,7 +24,10 @@ func main() {
 	
 	controllers.InitController(config.DB)
 	r := gin.Default()
-	var allowedOrigins = []string{"http://localhost:3000"}
+	var allowedOrigins = []string{
+		"http://localhost:3000",
+		"https://zocket-task-kdds.onrender.com",
+	}
 	
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     allowedOrigins,
