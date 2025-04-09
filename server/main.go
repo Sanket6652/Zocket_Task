@@ -20,7 +20,10 @@ func main() {
 	if err := config.ConnectDB(); err != nil {
 		panic(fmt.Sprintf("Could not connect to database: %v", err))
 	}
-	
+	port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080"
+    }
 	
 	controllers.InitController(config.DB)
 	r := gin.Default()
