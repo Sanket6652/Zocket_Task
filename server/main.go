@@ -27,13 +27,8 @@ func main() {
 	
 	controllers.InitController(config.DB)
 	r := gin.Default()
-	var allowedOrigins []string
-	if os.Getenv("ENV") == "production" {
-		allowedOrigins = []string{"https://your-production-domain.com"}
-	} else {
-		allowedOrigins = []string{"http://localhost:3000"}
-	}
-
+	var allowedOrigins = []string{"http://localhost:3000"}
+	
 	r.Use(cors.New(cors.Config{
 		AllowOrigins:     allowedOrigins,
 		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
